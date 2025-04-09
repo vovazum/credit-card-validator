@@ -8,13 +8,13 @@ module.exports = {
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: '/', // Это важно для корректного отображения на Github Pages
+    publicPath: '/',
     assetModuleFilename: 'assets/images/[name][ext]',
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.css$/i,
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
@@ -31,7 +31,7 @@ module.exports = {
       template: './src/index.html',
     }),
     new MiniCssExtractPlugin({
-      filename: 'styles/main.css', // Статический CSS-файл
+      filename: 'styles/main.css',
     }),
     new CopyWebpackPlugin({
       patterns: [
@@ -47,7 +47,7 @@ module.exports = {
       directory: path.join(__dirname, 'dist'),
     },
     compress: true,
-    port: 8081,
+    port: 9000, // 👈 здесь исправили порт
     hot: true,
   },
 };
